@@ -1,6 +1,8 @@
 @prefix: ~"antd-multi-cascader";
 
 .@{prefix} {
+  text-align: left;
+
   &-hidden {
     display: none;
   }
@@ -71,6 +73,10 @@
       min-width: 114px;
     }
 
+    &-all {
+      margin-right: 16px;
+    }
+
     &-buttons {
       margin-left: auto;
     }
@@ -85,5 +91,9 @@
         margin-left: 8px;
       }
     }
+  }
+
+  &-placeholder {
+    user-select: none;
   }
 }

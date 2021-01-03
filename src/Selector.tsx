@@ -91,7 +91,9 @@ const Selector = (props: SelectorProps) => {
             );
           })
         ) : (
-          <span className="ant-select-selection-placeholder">
+          <span
+            className={`${prefix}-placeholder ant-select-selection-placeholder`}
+          >
             {placeholder}
           </span>
         )}

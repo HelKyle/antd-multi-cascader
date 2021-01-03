@@ -52,7 +52,7 @@ const Popup = (props: PopupProps) => {
           <Menu />
           <div className={`${prefix}-popup-footer`}>
             {selectAll ? (
-              <div>
+              <div className={`${prefix}-popup-all`}>
                 <ConnectedCheckbox node={flattenData[0]} />
                 &nbsp;&nbsp;All
               </div>
