@@ -4,6 +4,8 @@ A multiple cascader component for antd
 
 [Online Demo](https://codesandbox.io/s/dreamy-jennings-2y1ff?file=/src/App.tsx)
 
+![./demo.png](https://github.com/HelKyle/antd-multi-cascader/blob/master/demo.png?raw=true)
+
 ### How to use?
 
 ```
