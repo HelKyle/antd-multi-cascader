@@ -2,7 +2,7 @@
 
 A multiple cascader component for antd
 
-[Online Demo](https://codesandbox.io/s/dreamy-jennings-2y1ff?file=/src/App.tsx)
+<a href="https://codesandbox.io/s/dreamy-jennings-2y1ff?file=/src/App.tsx" target="_blank">Online Demo</a>
 
 <div style="max-width: 420px">
   <img src="https://raw.githubusercontent.com/HelKyle/antd-multi-cascader/main/demo.png" alt="demo" />
