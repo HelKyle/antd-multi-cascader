@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`src/components/MultiCascader/utils.tsx flattenTree() should works as expected 1`] = `
+Array [
+  Object {
+    "children": Array [
+      Object {
+        "children": Array [
+          Object {
+            "parent": [Circular],
+            "title": "2",
+            "value": "2",
+          },
+          Object {
+            "parent": [Circular],
+            "title": "3",
+            "value": "3",
+          },
+        ],
+        "parent": [Circular],
+        "title": "1",
+        "value": "1",
+      },
+      Object {
+        "parent": [Circular],
+        "title": "4",
+        "value": "4",
+      },
+    ],
+    "parent": null,
+    "title": "0",
+    "value": "0",
+  },
+  Object {
+    "children": Array [
+      Object {
+        "parent": [Circular],
+        "title": "2",
+        "value": "2",
+      },
+      Object {
+        "parent": [Circular],
+        "title": "3",
+        "value": "3",
+      },
+    ],
+    "parent": Object {
+      "children": Array [
+        [Circular],
+        Object {
+          "parent": [Circular],
+          "title": "4",
+          "value": "4",
+        },
+      ],
+      "parent": null,
+      "title": "0",
+      "value": "0",
+    },
+    "title": "1",
+    "value": "1",
+  },
+  Object {
+    "parent": Object {
+      "children": Array [
+        [Circular],
+        Object {
+          "parent": [Circular],
+          "title": "3",
+          "value": "3",
+        },
+      ],
+      "parent": Object {
+        "children": Array [
+          [Circular],
+          Object {
+            "parent": [Circular],
+            "title": "4",
+            "value": "4",
+          },
+        ],
+        "parent": null,
+        "title": "0",
+        "value": "0",
+      },
+      "title": "1",
+      "value": "1",
+    },
+    "title": "2",
+    "value": "2",
+  },
+  Object {
+    "parent": Object {
+      "children": Array [
+        Object {
+          "parent": [Circular],
+          "title": "2",
+          "value": "2",
+        },
+        [Circular],
+      ],
+      "parent": Object {
+        "children": Array [
+          [Circular],
+          Object {
+            "parent": [Circular],
+            "title": "4",
+            "value": "4",
+          },
+        ],
+        "parent": null,
+        "title": "0",
+        "value": "0",
+      },
+      "title": "1",
+      "value": "1",
+    },
+    "title": "3",
+    "value": "3",
+  },
+  Object {
+    "parent": Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "parent": [Circular],
+              "title": "2",
+              "value": "2",
+            },
+            Object {
+              "parent": [Circular],
+              "title": "3",
+              "value": "3",
+            },
+          ],
+          "parent": [Circular],
+          "title": "1",
+          "value": "1",
+        },
+        [Circular],
+      ],
+      "parent": null,
+      "title": "0",
+      "value": "0",
+    },
+    "title": "4",
+    "value": "4",
+  },
+]
+`;

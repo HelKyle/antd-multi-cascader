@@ -1,2 +1,3 @@
-# antd-multi-cascader
- A multiple cascader component for antd
+# antd-multiple-cascader
+
+A multiple cascader component for antd

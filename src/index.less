@@ -1,0 +1,89 @@
+@prefix: ~"antd-multi-cascader";
+
+.@{prefix} {
+  &-hidden {
+    display: none;
+  }
+
+  &-menu {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  &-column {
+    display: inline-flex;
+    flex: 1 0 auto;
+    min-width: 164px;
+    height: 180px;
+
+    &:not(:first-child) {
+      border-left: 1px solid #f0f0f0;
+    }
+
+    & > ul {
+      position: relative;
+      width: 100%;
+      padding: 8px 0;
+      overflow-y: auto;
+    }
+
+    &-item {
+      display: flex;
+      align-items: flex-start;
+      width: 100%;
+      padding: 5px 12px;
+      background: white;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &-active,
+      &:hover {
+        background: #fff2e8;
+      }
+
+      .anticon {
+        margin-top: 5px;
+        color: rgba(0, 0, 0, 0.45);
+        font-size: 10px;
+      }
+
+      &-label {
+        flex: 1;
+        padding: 0 8px;
+        line-height: 22px;
+        margin-bottom: 0;
+        & > span {
+          max-width: 100%;
+          word-break: break-all;
+        }
+      }
+    }
+  }
+
+  &-popup {
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+    .ant-empty-normal {
+      min-width: 114px;
+    }
+
+    &-buttons {
+      margin-left: auto;
+    }
+
+    &-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      button + button {
+        margin-left: 8px;
+      }
+    }
+  }
+}
