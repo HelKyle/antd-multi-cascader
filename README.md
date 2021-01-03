@@ -4,7 +4,9 @@ A multiple cascader component for antd
 
 [Online Demo](https://codesandbox.io/s/dreamy-jennings-2y1ff?file=/src/App.tsx)
 
-![./demo.png](https://github.com/HelKyle/antd-multi-cascader/blob/master/demo.png?raw=true)
+<div style="max-width: 420px">
+  <img src="https://raw.githubusercontent.com/HelKyle/antd-multi-cascader/main/demo.png" alt="demo" />
+</div>
 
 ### How to use?
 
