@@ -99,8 +99,13 @@ describe('src/components/MultiCascader/utils.tsx', () => {
     it('should remove children value', () => {
       expect(removeAllDescendanceValue(flattenValue[0], ['2', '4'])).toEqual([])
       expect(removeAllDescendanceValue(flattenValue[0], ['1'])).toEqual([])
-      expect(removeAllDescendanceValue(flattenValue[1], ['1', '4'])).toEqual(['1', '4'])
-      expect(removeAllDescendanceValue(flattenValue[1], ['2', '4'])).toEqual(['4'])
+      expect(removeAllDescendanceValue(flattenValue[1], ['1', '4'])).toEqual([
+        '1',
+        '4',
+      ])
+      expect(removeAllDescendanceValue(flattenValue[1], ['2', '4'])).toEqual([
+        '4',
+      ])
     })
   })
 

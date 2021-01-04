@@ -1,7 +1,14 @@
 {
-  "cSpell.words": [
-    "antd",
-    "cascader",
-    "lessc"
-  ]
+  "cSpell.words": ["antd", "cascader", "lessc"],
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "stylelint.enable": true,
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  }
 }

@@ -37,7 +37,10 @@ export function flattenTree(root: TreeNode[]): TreeNode[] {
 }
 
 // 是否有子节点（包括自己）被选中
-export function hasChildChecked(item: TreeNode, curValue: ValueType[]): boolean {
+export function hasChildChecked(
+  item: TreeNode,
+  curValue: ValueType[]
+): boolean {
   function dfs(node: TreeNode): boolean {
     if (!node) {
       return false
@@ -72,7 +75,10 @@ export function hasParentChecked(item: TreeNode, value: ValueType[]): boolean {
   return false
 }
 
-export function matchAllLeafValue(value: string[], roots: Array<TreeNode>): string[] {
+export function matchAllLeafValue(
+  value: string[],
+  roots: Array<TreeNode>
+): string[] {
   const res: string[] = []
 
   function dfs(nodes: TreeNode[] | undefined, needed: boolean) {
@@ -102,7 +108,10 @@ export function matchAllLeafValue(value: string[], roots: Array<TreeNode>): stri
 
 // 删除所有子孙节点的 value, 不包括自己
 // 输入可能是 dirty
-export function removeAllDescendanceValue(root: TreeNode, value: ValueType[]): ValueType[] {
+export function removeAllDescendanceValue(
+  root: TreeNode,
+  value: ValueType[]
+): ValueType[] {
   const allChildrenValue: ValueType[] = []
   function dfs(node: TreeNode): void {
     if (node.children) {
@@ -117,7 +126,10 @@ export function removeAllDescendanceValue(root: TreeNode, value: ValueType[]): V
 }
 
 // 状态提升
-export function liftTreeState(item: TreeNode, curVal: ValueType[]): ValueType[] {
+export function liftTreeState(
+  item: TreeNode,
+  curVal: ValueType[]
+): ValueType[] {
   const { value } = item
 
   // 加入当前节点 value
@@ -127,7 +139,11 @@ export function liftTreeState(item: TreeNode, curVal: ValueType[]): ValueType[] 
   // eslint-disable-next-line no-constant-condition
   while (true) {
     // 如果父节点的所有子节点都已经 checked, 添加该节点 value，继续尝试提升
-    if (last?.parent?.children!.every((child: TreeNode) => nextValue.includes(child.value))) {
+    if (
+      last?.parent?.children!.every((child: TreeNode) =>
+        nextValue.includes(child.value)
+      )
+    ) {
       nextValue.push(last.parent.value)
       last = last.parent
     } else {
@@ -143,7 +159,9 @@ export function sinkTreeState(root: TreeNode, value: ValueType[]): ValueType[] {
   const parentValues: ValueType[] = []
   const subTreeValues: ValueType[] = []
 
-  function getCheckedParent(node: TreeNode | null | undefined): TreeNode | null {
+  function getCheckedParent(
+    node: TreeNode | null | undefined
+  ): TreeNode | null {
     if (!node) {
       return null
     }
@@ -177,13 +195,17 @@ export function sinkTreeState(root: TreeNode, value: ValueType[]): ValueType[] {
   dfs(checkedParent)
   // 替换 checkedParent 下子树的值
   const nextValue = removeAllDescendanceValue(checkedParent, value).filter(
-    (item) => item !== checkedParent.value,
+    (item) => item !== checkedParent.value
   )
   return uniq(nextValue.concat(subTreeValues))
 }
 
 // checked, unchecked 时重新计算
-export function reconcile(item: TreeNode, checked: boolean, value: ValueType[]): ValueType[] {
+export function reconcile(
+  item: TreeNode,
+  checked: boolean,
+  value: ValueType[]
+): ValueType[] {
   if (checked) {
     // 如果已经有父节点被 checked, 再进行 checked 没有意义，直接忽略
     // 主要是用在避免初始化时传入的 value 结构不合理
@@ -220,13 +242,13 @@ export function transformValue(value: ValueType[], flattenData: TreeNode[]) {
 // 计算 popup 位置在上或在下
 export function getPopupPlacement(
   selector: HTMLElement | null,
-  popupHeight: number,
+  popupHeight: number
 ): {
   popupPlacement: string
   popupTransitionName: string
 } {
   const topBottom = {
-    popupPlacement: 'topBottom',
+    popupPlacement: 'bottomLeft',
     popupTransitionName: 'slide-up',
   }
   if (!selector) {

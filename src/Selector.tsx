@@ -1,30 +1,30 @@
-import React, { Ref, useCallback } from "react";
-import { CloseOutlined, CloseCircleFilled } from "@ant-design/icons";
-import classnames from "classnames";
-import { TreeNode } from "./index.d";
-import { Props } from "./MultiCascader";
-import MultiCascaderContainer from "./container";
-import { prefix } from "./constants";
+import React, { Ref, useCallback } from 'react'
+import { CloseOutlined, CloseCircleFilled } from '@ant-design/icons'
+import classnames from 'classnames'
+import { TreeNode } from './index.d'
+import { Props } from './MultiCascader'
+import MultiCascaderContainer from './container'
+import { prefix } from './constants'
 
 export interface SelectorProps extends Props {
-  onRemove: (value: TreeNode) => void;
-  onClear: () => void;
-  forwardRef?: Ref<HTMLDivElement>;
+  onRemove: (value: TreeNode) => void
+  onClear: () => void
+  forwardRef?: Ref<HTMLDivElement>
 }
 
 const Tag = (props: {
-  onRemove: SelectorProps["onRemove"];
-  item: TreeNode;
+  onRemove: SelectorProps['onRemove']
+  item: TreeNode
 }) => {
-  const { onRemove, item } = props;
+  const { onRemove, item } = props
   const handleRemove = (
     event: React.MouseEvent<HTMLSpanElement, MouseEvent>
   ) => {
-    event.stopPropagation();
+    event.stopPropagation()
     if (onRemove) {
-      onRemove(item);
+      onRemove(item)
     }
-  };
+  }
 
   return (
     <span className="ant-select-selection-item">
@@ -33,8 +33,8 @@ const Tag = (props: {
         <CloseOutlined onClick={handleRemove} />
       </span>
     </span>
-  );
-};
+  )
+}
 
 const Selector = (props: SelectorProps) => {
   const {
@@ -50,27 +50,27 @@ const Selector = (props: SelectorProps) => {
     value,
     onChange,
     ...rest
-  } = props;
-  const { selectedItems } = MultiCascaderContainer.useContainer();
+  } = props
+  const { selectedItems } = MultiCascaderContainer.useContainer()
 
   const handleClear = useCallback(
     (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
-      event.stopPropagation();
+      event.stopPropagation()
       if (onClear) {
-        onClear();
+        onClear()
       }
     },
     [onClear]
-  );
+  )
 
   return (
     <div
       className={classnames(
         prefix,
-        "ant-select ant-tree-select ant-select-multiple",
+        'ant-select ant-tree-select ant-select-multiple',
         className,
         {
-          "ant-select-disabled": disabled,
+          'ant-select-disabled': disabled,
         }
       )}
       ref={forwardRef}
@@ -78,7 +78,7 @@ const Selector = (props: SelectorProps) => {
     >
       <div
         className="ant-select-selector"
-        style={{ paddingRight: !disabled && allowClear ? "24px" : undefined }}
+        style={{ paddingRight: !disabled && allowClear ? '24px' : undefined }}
       >
         {selectedItems.length ? (
           selectedItems.map((item) => {
@@ -88,7 +88,7 @@ const Selector = (props: SelectorProps) => {
                 onRemove={onRemove}
                 item={item}
               />
-            );
+            )
           })
         ) : (
           <span
@@ -104,7 +104,7 @@ const Selector = (props: SelectorProps) => {
         </span>
       ) : null}
     </div>
-  );
-};
+  )
+}
 
-export default Selector;
+export default Selector
