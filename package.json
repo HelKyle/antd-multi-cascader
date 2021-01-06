@@ -22,7 +22,7 @@
     "dev": "yarn link && yarn lessc && yarn tsc --watch",
     "compile": "yarn tsc && yarn lessc",
     "tsc": "tsc",
-    "lessc": "lessc src/index.less dist/index.css",
+    "lessc": "lessc src/index.less dist/index.css --js",
     "test": "jest",
     "prepublishOnly": "yarn test && rm -rf dist/ && npm run compile"
   },
@@ -30,8 +30,8 @@
     "@ant-design/icons": "*",
     "antd": "*",
     "classnames": "*",
-    "react": "*",
-    "rc-trigger": "*"
+    "rc-trigger": "*",
+    "react": "*"
   },
   "devDependencies": {
     "@ant-design/icons": "^4.3.0",
@@ -40,12 +40,12 @@
     "@types/react": "^17.0.0",
     "antd": "^4.2.0",
     "jest": "^26.4.4",
-    "less": "^4.0.0",
+    "less": "^3.2.22",
+    "rc-trigger": "^5.2.0",
     "react": "^16.8.6",
     "ts-jest": "^26.4.4",
     "tslib": "^2.0.3",
-    "typescript": "^4.0.5",
-    "rc-trigger": "^5.2.0"
+    "typescript": "^4.0.5"
   },
   "dependencies": {
     "unstated-next": "^1.1.0"
