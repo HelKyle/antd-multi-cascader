@@ -32,14 +32,17 @@ return (
 
 ### Props
 
-| Props       | Type                | Description                                                                     |
-| ----------- | ------------------- | ------------------------------------------------------------------------------- |
-| value       | string[]            | Selected value                                                                  |
-| data        | TreeNode[]          | Cascader options TreeNode { title: string, value: string, children?: TreeNode } |
-| allowClear  | boolean             | Whether allow clear                                                             |
-| placeholder | string              | The input placeholder                                                           |
-| onChange    | (newVal) => void    | Callback when finishing value select                                            |
-| selectAll   | boolean             | Whether allow select all                                                        |
-| className   | boolean             | The additional css class                                                        |
-| style       | React.CSSProperties | The additional style                                                            |
-| disabled    | boolean             | Whether disabled select                                                         |
+| Props         | Type                | Description                                                                     |
+| ------------- | ------------------- | ------------------------------------------------------------------------------- |
+| value         | string[]            | Selected value                                                                  |
+| data          | TreeNode[]          | Cascader options TreeNode { title: string, value: string, children?: TreeNode } |
+| allowClear    | boolean             | Whether allow clear                                                             |
+| placeholder   | string              | The input placeholder                                                           |
+| onChange      | (newVal) => void    | Callback when finishing value select                                            |
+| selectAll     | boolean             | Whether allow select all                                                        |
+| className     | boolean             | The additional css class                                                        |
+| style         | React.CSSProperties | The additional style                                                            |
+| disabled      | boolean             | Whether disabled select                                                         |
+| okText        | string              | The text of the Confirm button                                                  |
+| cancelText    | string              | The text of the Cancel button                                                   |
+| selectAllText | string              | The text of the SelectAll radio                                                 |
