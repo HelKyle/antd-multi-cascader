@@ -15,7 +15,7 @@
   ],
   "files": [
     "dist",
-    ".vscode",
+    "!*.test.*",
     "readme.md"
   ],
   "scripts": {
