@@ -1,5 +1,7 @@
 # antd-multiple-cascader
 
+![Test](https://github.com/HelKyle/antd-multi-cascader/workflows/Test/badge.svg) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg) ![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)
+
 A multiple cascader component for antd
 
 <a href="https://codesandbox.io/s/dreamy-jennings-2y1ff?file=/src/App.tsx" target="_blank">Online Demo</a>
