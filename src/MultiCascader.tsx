@@ -26,6 +26,9 @@ export interface Props {
   className?: string
   style?: React.CSSProperties
   disabled?: boolean
+  okText?: string
+  cancelText?: string
+  selectAllText?: string
 }
 
 export interface PopupProps extends Props {
@@ -36,7 +39,16 @@ export interface PopupProps extends Props {
 
 const Popup = (props: PopupProps) => {
   const ref = useRef(null)
-  const { data, selectAll, onCancel, onConfirm, onLayout } = props
+  const {
+    data,
+    selectAll,
+    onCancel,
+    onConfirm,
+    onLayout,
+    okText = 'Confirm',
+    cancelText = 'Cancel',
+    selectAllText = 'All',
+  } = props
   const { flattenData } = MultiCascaderContainer.useContainer()
 
   useEffect(() => {
@@ -54,15 +66,15 @@ const Popup = (props: PopupProps) => {
             {selectAll ? (
               <div className={`${prefix}-popup-all`}>
                 <ConnectedCheckbox node={flattenData[0]} />
-                &nbsp;&nbsp;All
+                &nbsp;&nbsp;{selectAllText}
               </div>
             ) : null}
             <div className={`${prefix}-popup-buttons`}>
               <Button size="small" onClick={onCancel}>
-                Cancel
+                {cancelText}
               </Button>
               <Button size="small" type="primary" onClick={onConfirm}>
-                Confirm
+                {okText}
               </Button>
             </div>
           </div>

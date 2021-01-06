@@ -49,6 +49,9 @@ const Selector = (props: SelectorProps) => {
     selectAll,
     value,
     onChange,
+    okText,
+    cancelText,
+    selectAllText,
     ...rest
   } = props
   const { selectedItems } = MultiCascaderContainer.useContainer()
