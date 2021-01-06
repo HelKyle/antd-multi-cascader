@@ -1,6 +1,7 @@
 # antd-multiple-cascader
 
 ![Test](https://github.com/HelKyle/antd-multi-cascader/workflows/Test/badge.svg) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg) ![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)
+![Codecov Coverage](https://img.shields.io/codecov/c/github/HelKyle/antd-multi-cascader/master.svg)
 
 A multiple cascader component for antd
 

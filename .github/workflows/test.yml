@@ -17,4 +17,11 @@ jobs:
         with:
           node-version: '12.x'
       - run: npm install
-      - run: npm run test
+      - run: npm run test -- --coverage
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: true
