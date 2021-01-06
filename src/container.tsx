@@ -1,4 +1,3 @@
-import { isEqual } from 'lodash'
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react'
 import { createContainer } from 'unstated-next'
 import { TreeNode, ValueType } from './index.d'
@@ -7,6 +6,7 @@ import {
   flattenTree,
   reconcile,
   sortByTree,
+  shallowEqualArray,
 } from './utils'
 import { All } from './constants'
 import { Props } from './MultiCascader'
@@ -32,9 +32,11 @@ const useCascade = (params?: Props) => {
   const transformValue = useCallback(
     (value: ValueType[]) => {
       const nextValue = originalTransformValue(value, flattenData)
-      if (onChange && !isEqual(nextValue, value)) {
+
+      if (onChange && !shallowEqualArray(nextValue, value)) {
         requestAnimationFrame(() => triggerChange(nextValue))
       }
+
       return nextValue
     },
     [flattenData]

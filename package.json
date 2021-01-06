@@ -30,13 +30,13 @@
     "@ant-design/icons": "*",
     "antd": "*",
     "classnames": "*",
-    "react": "*"
+    "react": "*",
+    "rc-trigger": "*"
   },
   "devDependencies": {
     "@ant-design/icons": "^4.3.0",
     "@types/classnames": "^2.2.11",
     "@types/jest": "^26.0.19",
-    "@types/lodash": "^4.14.167",
     "@types/react": "^17.0.0",
     "antd": "^4.2.0",
     "jest": "^26.4.4",
@@ -44,10 +44,10 @@
     "react": "^16.8.6",
     "ts-jest": "^26.4.4",
     "tslib": "^2.0.3",
-    "typescript": "^4.0.5"
+    "typescript": "^4.0.5",
+    "rc-trigger": "^5.2.0"
   },
   "dependencies": {
-    "rc-trigger": "^5.2.0",
     "unstated-next": "^1.1.0"
   },
   "publishConfig": {

@@ -9,6 +9,7 @@ import {
   sinkTreeState,
   sortByTree,
   transformValue,
+  shallowEqualArray,
 } from '../utils'
 
 import { TreeNode, ValueType } from '../index.d'
@@ -188,6 +189,17 @@ describe('src/components/MultiCascader/utils.tsx', () => {
       expect(sortByTree(['1', '0'], flattenValue)).toEqual(['0', '1'])
       expect(sortByTree(['4', '3'], flattenValue)).toEqual(['3', '4'])
       expect(sortByTree(['3', '4'], flattenValue)).toEqual(['3', '4'])
+    })
+  })
+
+  describe('shallowEqualArray()', () => {
+    it('should shallow equal array', () => {
+      expect(shallowEqualArray(['0', '1'], ['0', '1'])).toEqual(true)
+      expect(shallowEqualArray(['0', '1'], ['0', '2'])).toEqual(false)
+      expect(shallowEqualArray([{}], [{}])).toEqual(false)
+      expect(shallowEqualArray([], [])).toEqual(true)
+      expect(shallowEqualArray(['0', '1'], undefined)).toEqual(false)
+      expect(shallowEqualArray(undefined, undefined)).toEqual(true)
     })
   })
 })

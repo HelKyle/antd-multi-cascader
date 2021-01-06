@@ -1,4 +1,3 @@
-import { uniq } from 'lodash'
 import { TreeNode, ValueType } from './index.d'
 
 // 平铺树结构，方便根据 value（字符串） 获取到所有的 NodeItem 节点
@@ -103,7 +102,7 @@ export function matchAllLeafValue(
   }
   dfs(roots, false)
 
-  return uniq(res)
+  return Array.from(new Set(res))
 }
 
 // 删除所有子孙节点的 value, 不包括自己
@@ -197,7 +196,7 @@ export function sinkTreeState(root: TreeNode, value: ValueType[]): ValueType[] {
   const nextValue = removeAllDescendanceValue(checkedParent, value).filter(
     (item) => item !== checkedParent.value
   )
-  return uniq(nextValue.concat(subTreeValues))
+  return Array.from(new Set(nextValue.concat(subTreeValues)))
 }
 
 // checked, unchecked 时重新计算
@@ -268,4 +267,28 @@ export function getPopupPlacement(
     popupPlacement: 'topLeft',
     popupTransitionName: 'slide-down',
   }
+}
+
+export function shallowEqualArray(arrA, arrB) {
+  if (arrA === arrB) {
+    return true
+  }
+
+  if (!arrA || !arrB) {
+    return false
+  }
+
+  var len = arrA.length
+
+  if (arrB.length !== len) {
+    return false
+  }
+
+  for (var i = 0; i < len; i++) {
+    if (arrA[i] !== arrB[i]) {
+      return false
+    }
+  }
+
+  return true
 }
