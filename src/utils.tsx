@@ -10,6 +10,8 @@ export function flattenTree(root: TreeNode[]): TreeNode[] {
       return
     }
 
+    const newChildren: TreeNode[] = []
+
     for (let i = 0; i < nodes.length; i++) {
       const node = nodes[i]
       const { children } = node
@@ -19,15 +21,16 @@ export function flattenTree(root: TreeNode[]): TreeNode[] {
         parent,
       }
 
-      if (parent) {
-        // eslint-disable-next-line no-param-reassign
-        parent.children![i] = newNode
-      }
-
       res.push(newNode)
+      newChildren.push(newNode)
       if (children) {
         dfs(children, newNode)
       }
+    }
+
+    if (parent) {
+      // eslint-disable-next-line no-param-reassign
+      parent.children = newChildren
     }
   }
   dfs(root)
