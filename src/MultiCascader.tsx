@@ -155,7 +155,6 @@ const Component = React.memo(
       <Trigger
         action={!disabled ? ['click'] : []}
         prefixCls={prefix}
-        className="ant-select-dropdown"
         popup={
           <Popup
             {...props}
@@ -168,6 +167,7 @@ const Component = React.memo(
         onPopupVisibleChange={setPopupVisible}
         popupStyle={{
           position: 'absolute',
+          zIndex: 1050,
         }}
         builtinPlacements={BUILT_IN_PLACEMENTS}
         {...popupPlacement}
