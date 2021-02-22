@@ -42,11 +42,17 @@ const useCascade = (params?: Props) => {
     [flattenData]
   )
 
-  const [menuData, setMenuData] = useState([
-    selectAll
-      ? flattenData[0].children!
-      : flattenData.filter((item) => !item.parent),
-  ])
+  const [menuData, setMenuData] = useState(() => {
+    if (selectAll && flattenData.length === 1) {
+      return []
+    }
+
+    return [
+      selectAll
+        ? flattenData[0].children!
+        : flattenData.filter((item) => !item.parent),
+    ]
+  })
 
   const [menuPath, setMenuPath] = useState<TreeNode[]>([])
   const [value, setValue] = useState(transformValue(valueProp || []))
@@ -97,11 +103,15 @@ const useCascade = (params?: Props) => {
   )
 
   const resetMenuState = useCallback(() => {
-    setMenuData([
-      selectAll
-        ? flattenData[0].children!
-        : flattenData.filter((item) => !item.parent),
-    ])
+    if (selectAll && flattenData.length === 1) {
+      return setMenuData([])
+    } else {
+      setMenuData([
+        selectAll
+          ? flattenData[0].children!
+          : flattenData.filter((item) => !item.parent),
+      ])
+    }
     setMenuPath([])
   }, [flattenData, selectAll])
 
