@@ -140,12 +140,14 @@ const Component = React.memo(
     const handlePopUpLayout = useCallback(
       (popup: HTMLDivElement) => {
         if (popupVisible) {
-          setPopupPlacement(
-            getPopupPlacement(
-              selectorRef.current,
-              parseInt(getComputedStyle(popup).height, 10)
+          requestAnimationFrame(() => {
+            setPopupPlacement(
+              getPopupPlacement(
+                selectorRef.current,
+                parseInt(getComputedStyle(popup).height, 10)
+              )
             )
-          )
+          })
         }
       },
       [popupVisible]

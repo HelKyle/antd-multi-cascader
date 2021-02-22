@@ -243,7 +243,7 @@ export function transformValue(value: ValueType[], flattenData: TreeNode[]) {
 
 // 计算 popup 位置在上或在下
 export function getPopupPlacement(
-  selector: HTMLElement | null,
+  element: HTMLElement | null,
   popupHeight: number
 ): {
   popupPlacement: string
@@ -253,14 +253,16 @@ export function getPopupPlacement(
     popupPlacement: 'bottomLeft',
     popupTransitionName: 'slide-up',
   }
-  if (!selector) {
+  if (!element) {
     return topBottom
   }
 
-  const { top, bottom } = selector.getBoundingClientRect()
+  const { top, bottom } = element.getBoundingClientRect()
 
   const spaceTop = top
   const spaceBottom = window.innerHeight - bottom
+
+  console.log(popupHeight, spaceBottom)
 
   if (spaceBottom > popupHeight || spaceTop < spaceBottom) {
     return topBottom
