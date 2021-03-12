@@ -22,6 +22,10 @@ export interface Props {
   columnWidth?: number
   placeholder?: string
   onChange?: (newVal: ValueType[], selectedItems?: TreeNode[]) => void
+  onCascaderChange?: (
+    node: TreeNode,
+    operations: { add: (children: TreeNode[]) => TreeNode[] }
+  ) => void
   selectAll?: boolean
   className?: string
   style?: React.CSSProperties

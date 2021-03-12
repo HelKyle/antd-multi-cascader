@@ -12,10 +12,16 @@ import { All } from './constants'
 import { Props } from './MultiCascader'
 
 const useCascade = (params?: Props) => {
-  const { data, value: valueProp, selectAll, onChange } = params || {}
+  const { data, value: valueProp, selectAll, onChange, onCascaderChange } =
+    params || {}
   const [popupVisible, setPopupVisible] = useState(false)
+  const dataRef = useRef<Array<TreeNode> | undefined>(data)
 
-  const flattenData = useMemo(() => {
+  useEffect(() => {
+    dataRef.current = data
+  }, [data])
+
+  const [flattenData, setFlattenData] = useState(() => {
     if (selectAll) {
       return flattenTree([
         {
@@ -27,6 +33,22 @@ const useCascade = (params?: Props) => {
       ])
     }
     return flattenTree(data || [])
+  })
+
+  useEffect(() => {
+    setFlattenData(() => {
+      if (selectAll) {
+        return flattenTree([
+          {
+            title: 'All',
+            value: All,
+            parent: null,
+            children: data,
+          },
+        ])
+      }
+      return flattenTree(data || [])
+    })
   }, [data, selectAll])
 
   const transformValue = useCallback(
@@ -84,13 +106,61 @@ const useCascade = (params?: Props) => {
     }
   }, [])
 
+  const addChildrenToNode = useCallback(
+    (target: TreeNode, children: TreeNode[]): TreeNode[] => {
+      const { value: targetValue } = target
+      function findParent(nodes: TreeNode[]): TreeNode | undefined {
+        if (!nodes) {
+          return undefined
+        }
+        for (let i = 0; i < nodes.length; i++) {
+          const node = nodes[i]
+
+          if (targetValue === node.value) {
+            return node
+          }
+          if (node.children) {
+            const foundInChildren = findParent(node.children)
+            if (foundInChildren) {
+              return foundInChildren
+            }
+          }
+        }
+      }
+
+      const found = findParent(dataRef.current!)
+      if (found) {
+        found.children = children
+      }
+      return [...dataRef.current!]
+    },
+    []
+  )
+
+  const lastItemRef = useRef<TreeNode | null>(null)
+
   const handleCascaderChange = useCallback(
     (item: TreeNode, depth: number) => {
       const { children } = item
+      lastItemRef.current = item
+      onCascaderChange?.(item, {
+        add: (newChildren: TreeNode[]) => {
+          const newData = addChildrenToNode(item, newChildren)
+          if (lastItemRef.current === item) {
+            item.children = newChildren
+            newChildren.forEach((child) => {
+              child.parent = item
+            })
+            setFlattenData((prev) => [...prev, ...newChildren])
+            handleCascaderChange(item, depth)
+          }
+          return newData
+        },
+      })
       addMenu(children!, depth + 1)
       setMenuPath((prevMenuPath) => prevMenuPath.slice(0, depth).concat(item))
     },
-    [menuPath]
+    [menuPath, onCascaderChange]
   )
 
   const handleSelectChange = useCallback(
@@ -121,7 +191,7 @@ const useCascade = (params?: Props) => {
       setValue(transformValue(valueProp || hackValue.current))
       resetMenuState()
     }
-  }, [valueProp, flattenData, popupVisible, resetMenuState])
+  }, [popupVisible])
 
   return {
     menuPath,

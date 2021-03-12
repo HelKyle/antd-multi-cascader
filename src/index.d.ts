@@ -5,4 +5,5 @@ export type TreeNode = {
   children?: TreeNode[]
   value: ValueType
   title: string
+  isLeaf?: boolean
 }

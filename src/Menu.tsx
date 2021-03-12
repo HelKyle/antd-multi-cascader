@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useMemo, useState } from 'react'
 import { Checkbox } from 'antd'
-import { RightOutlined } from '@ant-design/icons'
+import { RightOutlined, LoadingOutlined } from '@ant-design/icons'
 import { CheckboxChangeEvent } from 'antd/lib/checkbox'
 import classnames from 'classnames'
 import { TreeNode } from './index.d'
@@ -22,6 +22,11 @@ export const ConnectedCheckbox = React.memo(
       handleSelectChange,
     } = MultiCascader.useContainer()
 
+    const handleClick = useCallback((event: any) => {
+      event.stopPropagation()
+      event.preventDefault()
+    }, [])
+
     const handleChange = useCallback(
       (event: CheckboxChangeEvent) => {
         const { checked } = event.target
@@ -40,6 +45,7 @@ export const ConnectedCheckbox = React.memo(
     )
     return (
       <Checkbox
+        onClick={handleClick}
         onChange={handleChange}
         checked={checked}
         indeterminate={indeterminate}
@@ -50,12 +56,13 @@ export const ConnectedCheckbox = React.memo(
 
 const MenuItem = React.memo((props: MenuItemProps) => {
   const { node, depth } = props
-  const { children, value, title } = node
+  const { children, value, title, isLeaf } = node
   const { handleCascaderChange, menuPath } = MultiCascader.useContainer()
-
-  const isLeaf = !children || children.length === 0
+  const [loading, setLoading] = useState(false)
+  const hasChildren = (children && children.length > 0) || isLeaf === false
 
   const handleClick = useCallback(() => {
+    setLoading(true)
     handleCascaderChange(node, depth)
   }, [node, depth])
 
@@ -73,7 +80,11 @@ const MenuItem = React.memo((props: MenuItemProps) => {
       <p className={`${prefix}-column-item-label`}>
         <span>{title}</span>
       </p>
-      {!isLeaf ? <RightOutlined /> : null}
+      {!hasChildren ? null : loading && !children?.length ? (
+        <LoadingOutlined />
+      ) : (
+        <RightOutlined />
+      )}
     </li>
   )
 })
