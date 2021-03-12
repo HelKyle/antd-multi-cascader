@@ -49,7 +49,7 @@ return (
 | cancelText          | string                                                                              | The text of the Cancel button                                                                     |
 | selectAllText       | string                                                                              | The text of the SelectAll radio                                                                   |
 | onCascaderChange    | (node: TreeNode, operations: { add: (children: TreeNode[]) => TreeNode[] }) => void | Trigger when click a menu item                                                                    |
-| popupTransitionName | string                                                                              | Should set 'ant-slide-up' manually if antd version up to ^4.13.0                                  |
+| popupTransitionName | string                                                                              | Should set 'ant-slide-up' manually if antd version greater than 4.13.0                            |
 
 #### Async Data Example
 
