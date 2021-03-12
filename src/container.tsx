@@ -7,6 +7,7 @@ import {
   reconcile,
   sortByTree,
   shallowEqualArray,
+  findNodeByValue,
 } from './utils'
 import { All } from './constants'
 import { Props } from './MultiCascader'
@@ -108,27 +109,7 @@ const useCascade = (params?: Props) => {
 
   const addChildrenToNode = useCallback(
     (target: TreeNode, children: TreeNode[]): TreeNode[] => {
-      const { value: targetValue } = target
-      function findParent(nodes: TreeNode[]): TreeNode | undefined {
-        if (!nodes) {
-          return undefined
-        }
-        for (let i = 0; i < nodes.length; i++) {
-          const node = nodes[i]
-
-          if (targetValue === node.value) {
-            return node
-          }
-          if (node.children) {
-            const foundInChildren = findParent(node.children)
-            if (foundInChildren) {
-              return foundInChildren
-            }
-          }
-        }
-      }
-
-      const found = findParent(dataRef.current!)
+      const found = findNodeByValue(target.value, dataRef.current!)
       if (found) {
         found.children = children
       }

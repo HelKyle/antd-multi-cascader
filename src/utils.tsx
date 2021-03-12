@@ -297,3 +297,30 @@ export function shallowEqualArray(arrA, arrB) {
 
   return true
 }
+
+// 通过 value 查找树节点
+export function findNodeByValue(
+  value: string,
+  tree: TreeNode[]
+): TreeNode | undefined {
+  function findParent(nodes: TreeNode[]): TreeNode | undefined {
+    if (!nodes) {
+      return undefined
+    }
+    for (let i = 0; i < nodes.length; i++) {
+      const node = nodes[i]
+
+      if (value === node.value) {
+        return node
+      }
+      if (node.children) {
+        const foundInChildren = findParent(node.children)
+        if (foundInChildren) {
+          return foundInChildren
+        }
+      }
+    }
+  }
+
+  return findParent(tree)
+}

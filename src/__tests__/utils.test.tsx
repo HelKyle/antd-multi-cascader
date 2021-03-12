@@ -10,37 +10,40 @@ import {
   sortByTree,
   transformValue,
   shallowEqualArray,
+  findNodeByValue,
 } from '../utils'
 
 import { TreeNode, ValueType } from '../index.d'
 
+const data = [
+  {
+    value: '0',
+    title: '0',
+    children: [
+      {
+        value: '1',
+        title: '1',
+        children: [
+          {
+            value: '2',
+            title: '2',
+          },
+          {
+            value: '3',
+            title: '3',
+          },
+        ],
+      },
+      {
+        value: '4',
+        title: '4',
+      },
+    ],
+  },
+]
+
 const createFlattenTree = () => {
-  return flattenTree([
-    {
-      value: '0',
-      title: '0',
-      children: [
-        {
-          value: '1',
-          title: '1',
-          children: [
-            {
-              value: '2',
-              title: '2',
-            },
-            {
-              value: '3',
-              title: '3',
-            },
-          ],
-        },
-        {
-          value: '4',
-          title: '4',
-        },
-      ],
-    },
-  ])
+  return flattenTree(data)
 }
 
 describe('src/components/MultiCascader/utils.tsx', () => {
@@ -200,6 +203,13 @@ describe('src/components/MultiCascader/utils.tsx', () => {
       expect(shallowEqualArray([], [])).toEqual(true)
       expect(shallowEqualArray(['0', '1'], undefined)).toEqual(false)
       expect(shallowEqualArray(undefined, undefined)).toEqual(true)
+    })
+  })
+  describe('findNodeByValue()', () => {
+    it('should find node', () => {
+      expect(findNodeByValue('1', data)?.value).toEqual('1')
+      expect(findNodeByValue('4', data)?.value).toEqual('4')
+      expect(findNodeByValue('not-exist', data)).toEqual(undefined)
     })
   })
 })
