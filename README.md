@@ -32,17 +32,59 @@ return (
 
 ### Props
 
-| Props         | Type                | Description                                                                     |
-| ------------- | ------------------- | ------------------------------------------------------------------------------- |
-| value         | string[]            | Selected value                                                                  |
-| data          | TreeNode[]          | Cascader options TreeNode { title: string, value: string, children?: TreeNode } |
-| allowClear    | boolean             | Whether allow clear                                                             |
-| placeholder   | string              | The input placeholder                                                           |
-| onChange      | (newVal) => void    | Callback when finishing value select                                            |
-| selectAll     | boolean             | Whether allow select all                                                        |
-| className     | boolean             | The additional css class                                                        |
-| style         | React.CSSProperties | The additional style                                                            |
-| disabled      | boolean             | Whether disabled select                                                         |
-| okText        | string              | The text of the Confirm button                                                  |
-| cancelText    | string              | The text of the Cancel button                                                   |
-| selectAllText | string              | The text of the SelectAll radio                                                 |
+| Props            | Type                                                                                | Description                                                                                       |
+| ---------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| value            | string[]                                                                            | Selected value                                                                                    |
+| data             | TreeNode[]                                                                          | Cascader options TreeNode { title: string, value: string, children?: TreeNode, isLeaf?: boolean } |
+| allowClear       | boolean                                                                             | Whether allow clear                                                                               |
+| placeholder      | string                                                                              | The input placeholder                                                                             |
+| onChange         | (newVal) => void                                                                    | Callback when finishing value select                                                              |
+| selectAll        | boolean                                                                             | Whether allow select all                                                                          |
+| className        | boolean                                                                             | The additional css class                                                                          |
+| style            | React.CSSProperties                                                                 | The additional style                                                                              |
+| disabled         | boolean                                                                             | Whether disabled select                                                                           |
+| okText           | string                                                                              | The text of the Confirm button                                                                    |
+| cancelText       | string                                                                              | The text of the Cancel button                                                                     |
+| selectAllText    | string                                                                              | The text of the SelectAll radio                                                                   |
+| onCascaderChange | (node: TreeNode, operations: { add: (children: TreeNode[]) => TreeNode[] }) => void | Trigger when click a menu item                                                                    |
+
+#### Async Data Example
+
+```js
+const [asyncOptions, setAsyncOptions] = React.useState([
+  {
+    value: 'ParentNode1',
+    title: 'ParentNode1',
+    // tell component this node is not a leaf node
+    isLeaf: false,
+  },
+  {
+    value: 'ParentNode2',
+    title: 'ParentNode2',
+  },
+])
+
+const handleCascaderChange = React.useCallback((node, { add }) => {
+  // call add function to append children nodes
+  if (node.value === 'ParentNode1' && !node.children) {
+    setTimeout(() => {
+      setAsyncOptions(
+        add([
+          {
+            value: 'ParentNode1-1',
+            title: 'ParentNode1-1',
+            isLeaf: false,
+          },
+        ])
+      )
+    }, 1000)
+  }
+}, [])
+
+<MultiCascader
+  selectAll
+  data={asyncOptions}
+  onCascaderChange={handleCascaderChange}
+  placeholder="Async Data"
+/>
+```
