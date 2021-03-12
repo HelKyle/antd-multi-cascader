@@ -73,7 +73,6 @@ const handleCascaderChange = React.useCallback((node, { add }) => {
           {
             value: 'ParentNode1-1',
             title: 'ParentNode1-1',
-            isLeaf: false,
           },
         ])
       )
