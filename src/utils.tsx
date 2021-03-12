@@ -241,39 +241,6 @@ export function transformValue(value: ValueType[], flattenData: TreeNode[]) {
   return sortByTree(nextValue, flattenData)
 }
 
-// 计算 popup 位置在上或在下
-export function getPopupPlacement(
-  element: HTMLElement | null,
-  popupHeight: number
-): {
-  popupPlacement: string
-  popupTransitionName: string
-} {
-  const topBottom = {
-    popupPlacement: 'bottomLeft',
-    popupTransitionName: 'slide-up',
-  }
-  if (!element) {
-    return topBottom
-  }
-
-  const { top, bottom } = element.getBoundingClientRect()
-
-  const spaceTop = top
-  const spaceBottom = window.innerHeight - bottom
-
-  console.log(popupHeight, spaceBottom)
-
-  if (spaceBottom > popupHeight || spaceTop < spaceBottom) {
-    return topBottom
-  }
-
-  return {
-    popupPlacement: 'topLeft',
-    popupTransitionName: 'slide-down',
-  }
-}
-
 export function shallowEqualArray(arrA, arrB) {
   if (arrA === arrB) {
     return true

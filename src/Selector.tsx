@@ -52,6 +52,8 @@ const Selector = (props: SelectorProps) => {
     okText,
     cancelText,
     selectAllText,
+    onCascaderChange,
+    popupTransitionName,
     ...rest
   } = props
   const { selectedItems } = MultiCascaderContainer.useContainer()

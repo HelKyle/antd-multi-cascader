@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useImperativeHandle,
-  useRef,
-  useState,
-  useEffect,
-} from 'react'
+import React, { useCallback, useImperativeHandle, useRef } from 'react'
 import { Button, Empty } from 'antd'
 import Trigger from 'rc-trigger'
 import BUILT_IN_PLACEMENTS from './placement'
@@ -12,7 +6,7 @@ import Menu, { ConnectedCheckbox } from './Menu'
 import { TreeNode, ValueType } from './index.d'
 import MultiCascaderContainer from './container'
 import Selector from './Selector'
-import { getPopupPlacement, matchAllLeafValue, reconcile } from './utils'
+import { matchAllLeafValue, reconcile } from './utils'
 import { prefix } from './constants'
 
 export interface Props {
@@ -33,6 +27,7 @@ export interface Props {
   okText?: string
   cancelText?: string
   selectAllText?: string
+  popupTransitionName?: string
 }
 
 export interface PopupProps extends Props {
@@ -48,18 +43,11 @@ const Popup = (props: PopupProps) => {
     selectAll,
     onCancel,
     onConfirm,
-    onLayout,
     okText = 'Confirm',
     cancelText = 'Cancel',
     selectAllText = 'All',
   } = props
   const { flattenData } = MultiCascaderContainer.useContainer()
-
-  useEffect(() => {
-    if (onLayout) {
-      onLayout(ref.current!)
-    }
-  }, [onLayout])
 
   return (
     <div className={`${prefix}-popup`} ref={ref}>
@@ -93,7 +81,7 @@ const Popup = (props: PopupProps) => {
 const Component = React.memo(
   React.forwardRef((props: Props, ref) => {
     const selectorRef = useRef(null)
-    const { disabled } = props
+    const { disabled, popupTransitionName = 'slide-up' } = props
     const {
       popupVisible,
       setPopupVisible,
@@ -136,38 +124,12 @@ const Component = React.memo(
       [flattenData]
     )
 
-    const [popupPlacement, setPopupPlacement] = useState({
-      popupPlacement: 'bottomLeft',
-      popupTransitionName: 'slide-up',
-    })
-
-    const handlePopUpLayout = useCallback(
-      (popup: HTMLDivElement) => {
-        if (popupVisible) {
-          requestAnimationFrame(() => {
-            setPopupPlacement(
-              getPopupPlacement(
-                selectorRef.current,
-                parseInt(getComputedStyle(popup).height, 10)
-              )
-            )
-          })
-        }
-      },
-      [popupVisible]
-    )
-
     return (
       <Trigger
         action={!disabled ? ['click'] : []}
         prefixCls={prefix}
         popup={
-          <Popup
-            {...props}
-            onCancel={handleCancel}
-            onConfirm={handleConfirm}
-            onLayout={handlePopUpLayout}
-          />
+          <Popup {...props} onCancel={handleCancel} onConfirm={handleConfirm} />
         }
         popupVisible={disabled ? false : popupVisible}
         onPopupVisibleChange={setPopupVisible}
@@ -176,7 +138,8 @@ const Component = React.memo(
           zIndex: 1050,
         }}
         builtinPlacements={BUILT_IN_PLACEMENTS}
-        {...popupPlacement}
+        popupPlacement="bottomLeft"
+        popupTransitionName={popupTransitionName}
       >
         <Selector
           forwardRef={selectorRef}
