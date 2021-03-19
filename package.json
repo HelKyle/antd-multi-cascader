@@ -49,8 +49,5 @@
   },
   "dependencies": {
     "unstated-next": "^1.1.0"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
   }
 }
