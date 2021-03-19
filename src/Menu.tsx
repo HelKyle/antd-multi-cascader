@@ -24,7 +24,6 @@ export const ConnectedCheckbox = React.memo(
 
     const handleClick = useCallback((event: any) => {
       event.stopPropagation()
-      event.preventDefault()
     }, [])
 
     const handleChange = useCallback(
