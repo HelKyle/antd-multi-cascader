@@ -7,7 +7,7 @@ A multiple cascader component for antd
 
 [![antd-multi-cascader](https://nodei.co/npm/antd-multi-cascader.png)](https://npmjs.org/package/antd-multi-cascader)
 
-<a href="https://codesandbox.io/s/dreamy-jennings-2y1ff?file=/src/App.tsx" target="_blank">Online Demo</a>
+<a href="https://codesandbox.io/s/dreamy-jennings-2y1ff?file=/src/App.tsx" target="_blank">Online Demo</a>，<a href="https://juejin.cn/post/6914994241940750343" target="_blank">How it works?</a>
 
 <div style="max-width: 420px">
   <img src="https://raw.githubusercontent.com/HelKyle/antd-multi-cascader/main/demo.png" alt="demo" />
