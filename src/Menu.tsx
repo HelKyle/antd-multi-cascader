@@ -132,7 +132,7 @@ export default (props: Props) => {
             item={item}
             columnWidth={columnWidth}
             depth={index}
-            key={item[0].value.toString()}
+            key={item[0]?.value || index}
           />
         )
       })}
