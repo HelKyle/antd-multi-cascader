@@ -2,7 +2,8 @@ import React, { useCallback, useImperativeHandle, useRef } from 'react'
 import { Button, Empty } from 'antd'
 import Trigger from 'rc-trigger'
 import BUILT_IN_PLACEMENTS from '../libs/placement'
-import Menu, { ConnectedCheckbox } from './Menu'
+import Menu from './Menu'
+import Checkbox from './Checkbox'
 import { TreeNode, ValueType } from '../index.d'
 import MultiCascaderContainer from '../container'
 import Selector from './Selector'
@@ -57,7 +58,7 @@ const Popup = (props: PopupProps) => {
           <div className={`${prefix}-popup-footer`}>
             {selectAll ? (
               <div className={`${prefix}-popup-all`}>
-                <ConnectedCheckbox node={flattenData[0]} />
+                <Checkbox node={flattenData[0]} />
                 &nbsp;&nbsp;{selectAllText}
               </div>
             ) : null}
