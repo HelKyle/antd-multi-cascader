@@ -52,7 +52,7 @@ const Selector = (props: SelectorProps) => {
     disabled,
     data,
     selectAll,
-    value,
+    value: valueProps,
     onChange,
     okText,
     cancelText,
@@ -63,7 +63,7 @@ const Selector = (props: SelectorProps) => {
     selectLeafOnly,
     ...rest
   } = props
-  const { selectedItems } = MultiCascaderContainer.useContainer()
+  const { selectedItems, hackValue } = MultiCascaderContainer.useContainer()
   const selectedItemsMap = keyBy(selectedItems, 'value')
 
   const handleClear = useCallback(
@@ -93,8 +93,8 @@ const Selector = (props: SelectorProps) => {
         className="ant-select-selector"
         style={{ paddingRight: !disabled && allowClear ? '24px' : undefined }}
       >
-        {(value || []).length ? (
-          (value || []).map((item) => {
+        {(valueProps || hackValue.current || []).length ? (
+          (valueProps || hackValue.current || []).map((item) => {
             return (
               <Tag
                 key={item}

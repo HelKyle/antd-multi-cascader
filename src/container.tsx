@@ -196,6 +196,7 @@ const useCascade = (params?: Props) => {
     selectedItems,
     triggerChange,
     selectLeafOnly,
+    hackValue,
   }
 }
 
