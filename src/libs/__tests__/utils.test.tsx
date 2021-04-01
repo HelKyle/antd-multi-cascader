@@ -13,7 +13,7 @@ import {
   findNodeByValue,
 } from '../utils'
 
-import { TreeNode, ValueType } from '../index.d'
+import { TreeNode, ValueType } from '../../index.d'
 
 const data = [
   {

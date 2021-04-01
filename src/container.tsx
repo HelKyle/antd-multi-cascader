@@ -8,9 +8,9 @@ import {
   sortByTree,
   shallowEqualArray,
   findNodeByValue,
-} from './utils'
+} from './libs/utils'
 import { All } from './constants'
-import { Props } from './MultiCascader'
+import { Props } from './components/MultiCascader'
 
 const useCascade = (params?: Props) => {
   const { data, value: valueProp, selectAll, onChange, onCascaderChange } =

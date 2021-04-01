@@ -1,10 +1,10 @@
 import React, { Ref, useCallback } from 'react'
 import { CloseOutlined, CloseCircleFilled } from '@ant-design/icons'
 import classnames from 'classnames'
-import { TreeNode } from './index.d'
+import { TreeNode } from '../index.d'
 import { Props } from './MultiCascader'
-import MultiCascaderContainer from './container'
-import { prefix } from './constants'
+import MultiCascaderContainer from '../container'
+import { prefix } from '../constants'
 
 export interface SelectorProps extends Props {
   onRemove: (value: TreeNode) => void

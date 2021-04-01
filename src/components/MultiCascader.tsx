@@ -1,13 +1,13 @@
 import React, { useCallback, useImperativeHandle, useRef } from 'react'
 import { Button, Empty } from 'antd'
 import Trigger from 'rc-trigger'
-import BUILT_IN_PLACEMENTS from './placement'
+import BUILT_IN_PLACEMENTS from '../libs/placement'
 import Menu, { ConnectedCheckbox } from './Menu'
-import { TreeNode, ValueType } from './index.d'
-import MultiCascaderContainer from './container'
+import { TreeNode, ValueType } from '../index.d'
+import MultiCascaderContainer from '../container'
 import Selector from './Selector'
-import { matchAllLeafValue, reconcile } from './utils'
-import { prefix } from './constants'
+import { matchAllLeafValue, reconcile } from '../libs/utils'
+import { prefix } from '../constants'
 
 export interface Props {
   value?: ValueType[]

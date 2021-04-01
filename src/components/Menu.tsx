@@ -3,11 +3,11 @@ import { Checkbox } from 'antd'
 import { RightOutlined, LoadingOutlined } from '@ant-design/icons'
 import { CheckboxChangeEvent } from 'antd/lib/checkbox'
 import classnames from 'classnames'
-import { TreeNode } from './index.d'
-import { hasChildChecked, hasParentChecked } from './utils'
+import { TreeNode } from '../index.d'
+import { hasChildChecked, hasParentChecked } from '../libs/utils'
 import { Props } from './MultiCascader'
-import MultiCascader from './container'
-import { prefix } from './constants'
+import MultiCascader from '../container'
+import { prefix } from '../constants'
 
 interface MenuItemProps {
   node: TreeNode

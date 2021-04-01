@@ -1,5 +1,5 @@
-import MultiCascader from './MultiCascader'
+import MultiCascader from './components/MultiCascader'
 
 export default MultiCascader
 export * from './constants'
-export { matchAllLeafValue, flattenTree, transformValue } from './utils'
+export { matchAllLeafValue, flattenTree, transformValue } from './libs/utils'
