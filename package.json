@@ -19,13 +19,12 @@
     "readme.md"
   ],
   "scripts": {
-    "dev": "yarn link && yarn lessc && yarn tsc --watch",
+    "dev": "start-storybook -p 6006",
     "compile": "yarn tsc && yarn lessc",
     "tsc": "tsc",
     "lessc": "lessc src/index.less dist/index.css --js",
     "test": "jest",
     "prepublishOnly": "yarn test && rm -rf dist/ && npm run compile",
-    "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "peerDependencies": {

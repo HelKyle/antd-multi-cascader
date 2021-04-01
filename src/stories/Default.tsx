@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+import { Checkbox } from 'antd'
 import { storiesOf } from '@storybook/react'
 import MultiCascader from '../index'
 
-storiesOf('MultiCascader', MultiCascader as any).add('Default', () => {
+storiesOf('MultiCascader', MultiCascader as any).add('default', () => {
   const [state, setState] = useState<string[]>([])
+  const [disabled, setDisabled] = useState<boolean>(false)
   const [options] = useState([
     {
       value: 'Node1',
@@ -25,14 +27,25 @@ storiesOf('MultiCascader', MultiCascader as any).add('Default', () => {
     },
   ])
 
+  const handleChange = (e) => setDisabled(e.target.checked)
+
   return (
-    <MultiCascader
-      selectAll
-      data={options}
-      value={state}
-      onChange={setState}
-      placeholder="Default"
-      style={{ width: '200px' }}
-    />
+    <>
+      <MultiCascader
+        selectAll
+        data={options}
+        value={state}
+        onChange={setState}
+        allowClear
+        disabled={disabled}
+        placeholder="Default"
+        style={{ width: '200px' }}
+      />
+      <div>
+        <Checkbox checked={disabled} onChange={handleChange}>
+          Disabled
+        </Checkbox>
+      </div>
+    </>
   )
 })
