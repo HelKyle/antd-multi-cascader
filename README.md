@@ -3,6 +3,7 @@
 ![Test](https://github.com/HelKyle/antd-multi-cascader/workflows/Test/badge.svg) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg) ![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)
 ![Codecov Coverage](https://img.shields.io/codecov/c/github/HelKyle/antd-multi-cascader/master.svg)
 [![Storybook](https://img.shields.io/badge/%E2%99%A5-Storybook-ff69b4)](https://helkyle.github.io/antd-multi-cascader/)
+[![npm](https://img.shields.io/npm/v/antd-multi-cascader)](https://www.npmjs.com/package/antd-multi-cascader)
 
 A multiple cascader component for antd
 
