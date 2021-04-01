@@ -24,7 +24,9 @@
     "tsc": "tsc",
     "lessc": "lessc src/index.less dist/index.css --js",
     "test": "jest",
-    "prepublishOnly": "yarn test && rm -rf dist/ && npm run compile"
+    "prepublishOnly": "yarn test && rm -rf dist/ && npm run compile",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "peerDependencies": {
     "@ant-design/icons": "*",
@@ -35,14 +37,23 @@
   },
   "devDependencies": {
     "@ant-design/icons": "^4.3.0",
+    "@babel/core": "^7.13.14",
+    "@storybook/addon-actions": "^6.2.1",
+    "@storybook/addon-essentials": "^6.2.1",
+    "@storybook/addon-links": "^6.2.1",
+    "@storybook/react": "^6.2.1",
     "@types/classnames": "^2.2.11",
     "@types/jest": "^26.0.19",
     "@types/react": "^17.0.0",
     "antd": "^4.2.0",
+    "babel-loader": "^8.2.2",
     "jest": "^26.4.4",
     "less": "^3.2.22",
+    "less-loader": "5.0.0",
     "rc-trigger": "^5.2.0",
-    "react": "^16.8.6",
+    "react": "16.8.6",
+    "react-dom": "^16.8.6",
+    "storybook": "^6.1.21",
     "ts-jest": "^26.4.4",
     "tslib": "^2.0.3",
     "typescript": "^4.0.5"
