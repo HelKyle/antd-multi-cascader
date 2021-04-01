@@ -14,9 +14,14 @@ export interface MenuItemProps {
 export default React.memo((props: MenuItemProps) => {
   const { node, depth } = props
   const { children, value, title, isLeaf } = node
-  const { handleCascaderChange, menuPath } = MultiCascader.useContainer()
+  const {
+    handleCascaderChange,
+    menuPath,
+    selectLeafOnly,
+  } = MultiCascader.useContainer()
   const [loading, setLoading] = useState(false)
   const hasChildren = (children && children.length > 0) || isLeaf === false
+  const checkboxHidden = selectLeafOnly && hasChildren
 
   const handleClick = useCallback(() => {
     setLoading(true)
@@ -33,8 +38,11 @@ export default React.memo((props: MenuItemProps) => {
 
   return (
     <li onClick={handleClick} className={cls}>
-      <Checkbox node={node} />
-      <p className={`${prefix}-column-item-label`}>
+      {checkboxHidden ? null : <Checkbox node={node} />}
+      <p
+        className={`${prefix}-column-item-label`}
+        style={{ paddingLeft: checkboxHidden ? '0px' : '' }}
+      >
         <span>{title}</span>
       </p>
       {!hasChildren ? null : loading && !children?.length ? (

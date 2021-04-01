@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { storiesOf } from '@storybook/react'
-import MultiCascader from './index'
-import './index.less'
-import 'antd/dist/antd.css'
+import MultiCascader from '../index'
 
 storiesOf('MultiCascader', MultiCascader as any).add('Default', () => {
   const [state, setState] = useState<string[]>([])
@@ -14,6 +12,10 @@ storiesOf('MultiCascader', MultiCascader as any).add('Default', () => {
         {
           value: 'Node1-1',
           title: 'Node1-1',
+        },
+        {
+          value: 'Node1-2',
+          title: 'Node1-2',
         },
       ],
     },

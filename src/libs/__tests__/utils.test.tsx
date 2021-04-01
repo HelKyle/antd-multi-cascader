@@ -1,3 +1,4 @@
+import { All } from '../../constants'
 import {
   flattenTree,
   hasChildChecked,
@@ -177,7 +178,8 @@ describe('src/components/MultiCascader/utils.tsx', () => {
 
       // teardown checked children value
       expect(transformValue(['0', '1'], flattenValue)).toEqual(['0'])
-      expect(transformValue(['999'], flattenValue)).toEqual([])
+      expect(transformValue(['999'], flattenValue)).toEqual(['999'])
+      expect(transformValue(['999', All], flattenValue)).toEqual([All])
     })
   })
 

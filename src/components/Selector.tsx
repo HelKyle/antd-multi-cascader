@@ -1,6 +1,7 @@
 import React, { Ref, useCallback } from 'react'
 import { CloseOutlined, CloseCircleFilled } from '@ant-design/icons'
 import classnames from 'classnames'
+import { keyBy } from 'lodash'
 import { TreeNode } from '../index.d'
 import { Props } from './MultiCascader'
 import MultiCascaderContainer from '../container'
@@ -15,8 +16,9 @@ export interface SelectorProps extends Props {
 const Tag = (props: {
   onRemove: SelectorProps['onRemove']
   item: TreeNode
+  renderTitle: Props['renderTitle']
 }) => {
-  const { onRemove, item } = props
+  const { onRemove, item, renderTitle = () => undefined } = props
   const handleRemove = (
     event: React.MouseEvent<HTMLSpanElement, MouseEvent>
   ) => {
@@ -26,9 +28,12 @@ const Tag = (props: {
     }
   }
 
+  const value = (item.value || item) as string
+  const title = renderTitle(value) || item.title || item
+
   return (
     <span className="ant-select-selection-item">
-      <span className="ant-select-selection-item-content">{item.title}</span>
+      <span className="ant-select-selection-item-content">{title}</span>
       <span className="ant-select-selection-item-remove">
         <CloseOutlined onClick={handleRemove} />
       </span>
@@ -54,9 +59,12 @@ const Selector = (props: SelectorProps) => {
     selectAllText,
     onCascaderChange,
     popupTransitionName,
+    renderTitle,
+    selectLeafOnly,
     ...rest
   } = props
   const { selectedItems } = MultiCascaderContainer.useContainer()
+  const selectedItemsMap = keyBy(selectedItems, 'value')
 
   const handleClear = useCallback(
     (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
@@ -85,13 +93,14 @@ const Selector = (props: SelectorProps) => {
         className="ant-select-selector"
         style={{ paddingRight: !disabled && allowClear ? '24px' : undefined }}
       >
-        {selectedItems.length ? (
-          selectedItems.map((item) => {
+        {(value || []).length ? (
+          (value || []).map((item) => {
             return (
               <Tag
-                key={item.value.toString()}
+                key={item}
                 onRemove={onRemove}
-                item={item}
+                item={selectedItemsMap[item] || item}
+                renderTitle={renderTitle}
               />
             )
           })

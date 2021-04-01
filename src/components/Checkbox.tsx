@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback } from 'react'
 import { Checkbox } from 'antd'
 import { CheckboxChangeEvent } from 'antd/lib/checkbox'
 import { hasChildChecked, hasParentChecked } from '../libs/utils'
@@ -24,14 +24,9 @@ export default React.memo((props: Pick<MenuItemProps, 'node'>) => {
     [node]
   )
 
-  const checked = useMemo(() => hasParentChecked(node, containerValue), [
-    containerValue,
-    node,
-  ])
-  const indeterminate = useMemo(
-    () => !checked && hasChildChecked(node, containerValue),
-    [checked, containerValue, node]
-  )
+  const checked = hasParentChecked(node, containerValue)
+  const indeterminate = !checked && hasChildChecked(node, containerValue)
+
   return (
     <Checkbox
       onClick={handleClick}

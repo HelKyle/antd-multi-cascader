@@ -13,8 +13,14 @@ import { All } from './constants'
 import { Props } from './components/MultiCascader'
 
 const useCascade = (params?: Props) => {
-  const { data, value: valueProp, selectAll, onChange, onCascaderChange } =
-    params || {}
+  const {
+    data,
+    value: valueProp,
+    selectAll,
+    onChange,
+    onCascaderChange,
+    selectLeafOnly,
+  } = params || {}
   const [popupVisible, setPopupVisible] = useState(false)
   const dataRef = useRef<Array<TreeNode> | undefined>(data)
 
@@ -189,6 +195,7 @@ const useCascade = (params?: Props) => {
     resetMenuState,
     selectedItems,
     triggerChange,
+    selectLeafOnly,
   }
 }
 

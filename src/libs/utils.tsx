@@ -1,4 +1,4 @@
-import { TreeNode, ValueType } from '../index.d'
+import { TreeNode, ValueType, All } from '../index.d'
 
 // 平铺树结构，方便根据 value（字符串） 获取到所有的 NodeItem 节点
 // 添加 parent 链接到父节点
@@ -222,20 +222,28 @@ export function reconcile(
 // 按树的 dfs 前序排
 export function sortByTree(value: ValueType[], flattenData: TreeNode[]) {
   // 按照树结构前顺排序
-  return flattenData
-    .map((node: TreeNode) => {
-      return value.includes(node.value) ? node.value : ''
-    })
-    .filter((tmp) => !!tmp)
+  const map = flattenData.reduce(
+    (cur: Record<string, number>, node: TreeNode, index: number) => {
+      cur[node.value] = index
+      return cur
+    },
+    {}
+  )
+  return value.sort((a, b) => map[a] - map[b] || 0)
 }
 
 // 过滤非法数据，排序
 export function transformValue(value: ValueType[], flattenData: TreeNode[]) {
   let nextValue: ValueType[] = []
+  if (value.some((v) => v === All)) {
+    return [All]
+  }
   for (let i = 0; i < value.length; i++) {
     const node = flattenData.find((item) => item.value === value[i])
     if (node) {
       nextValue = reconcile(node, true, nextValue)
+    } else {
+      nextValue.push(value[i])
     }
   }
   return sortByTree(nextValue, flattenData)

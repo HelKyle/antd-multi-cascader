@@ -29,6 +29,8 @@ export interface Props {
   cancelText?: string
   selectAllText?: string
   popupTransitionName?: string
+  selectLeafOnly?: boolean
+  renderTitle?: (value: string) => string | undefined
 }
 
 export interface PopupProps extends Props {
@@ -97,8 +99,14 @@ const Component = React.memo(
     }, [])
 
     const handleItemRemove = useCallback(
-      (item: TreeNode) => {
-        const nextValue = reconcile(item, false, value)
+      (item: TreeNode | string) => {
+        let nextValue: string[]
+        if (typeof item === 'string') {
+          nextValue = value.filter((v) => v !== item)
+        } else {
+          nextValue = reconcile(item, false, value)
+        }
+
         triggerChange(nextValue)
       },
       [value, triggerChange]
