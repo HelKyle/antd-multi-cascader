@@ -19,10 +19,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-      - name: Install and Build 🔧
+      - name: Install 🔧
         run: |
           npm install
-          npm run build-storybook
       - name: Deploy 🚀
         run: npm run deploy-storybook -- --ci
         env:
