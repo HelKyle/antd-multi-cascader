@@ -1,6 +1,6 @@
 {
   "name": "antd-multi-cascader",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A multiple cascader component for antd",
   "main": "dist/index.js",
   "repository": "https://github.com/HelKyle/antd-multi-cascader",
