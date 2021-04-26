@@ -3,7 +3,7 @@ import { Checkbox } from 'antd'
 import { storiesOf } from '@storybook/react'
 import MultiCascader from '../index'
 
-storiesOf('MultiCascader', MultiCascader as any).add('default', () => {
+storiesOf('MultiCascader', MultiCascader as any).add('Default', () => {
   const [state, setState] = useState<string[]>([])
   const [disabled, setDisabled] = useState<boolean>(false)
   const [options] = useState([

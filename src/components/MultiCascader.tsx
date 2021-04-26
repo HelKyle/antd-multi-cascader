@@ -1,5 +1,5 @@
 import React, { useCallback, useImperativeHandle, useRef } from 'react'
-import { Button, Empty } from 'antd'
+import { Button, Empty, ConfigProvider } from 'antd'
 import Trigger from 'rc-trigger'
 import BUILT_IN_PLACEMENTS from '../libs/placement'
 import Menu from './Menu'
@@ -31,6 +31,7 @@ export interface Props {
   popupTransitionName?: string
   selectLeafOnly?: boolean
   renderTitle?: (value: string) => string | undefined
+  getPopupContainer?: (props: any) => HTMLElement
 }
 
 export interface PopupProps extends Props {
@@ -83,8 +84,15 @@ const Popup = (props: PopupProps) => {
 
 const Component = React.memo(
   React.forwardRef((props: Props, ref) => {
+    const { getPopupContainer: getContextPopupContainer } = React.useContext(
+      ConfigProvider.ConfigContext
+    )
     const selectorRef = useRef(null)
-    const { disabled, popupTransitionName = 'slide-up' } = props
+    const {
+      disabled,
+      popupTransitionName = 'slide-up',
+      getPopupContainer,
+    } = props
     const {
       popupVisible,
       setPopupVisible,
@@ -149,6 +157,7 @@ const Component = React.memo(
         builtinPlacements={BUILT_IN_PLACEMENTS}
         popupPlacement="bottomLeft"
         popupTransitionName={popupTransitionName}
+        getPopupContainer={getPopupContainer || getContextPopupContainer}
       >
         <Selector
           forwardRef={selectorRef}

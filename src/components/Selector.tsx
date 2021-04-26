@@ -61,6 +61,7 @@ const Selector = (props: SelectorProps) => {
     popupTransitionName,
     renderTitle,
     selectLeafOnly,
+    getPopupContainer,
     ...rest
   } = props
   const { selectedItems, hackValue } = MultiCascaderContainer.useContainer()

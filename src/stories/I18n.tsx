@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { storiesOf } from '@storybook/react'
 import MultiCascader from '../index'
 
-storiesOf('MultiCascader', MultiCascader as any).add('i18n', () => {
+storiesOf('MultiCascader', MultiCascader as any).add('I18n', () => {
   const [options] = useState([
     {
       value: 'Node1',
