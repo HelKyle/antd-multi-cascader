@@ -1,6 +1,6 @@
 import React, { useCallback, useImperativeHandle, useRef } from 'react'
 import { Button, Empty } from 'antd'
-import { ConfigContext } from 'antd/es/config-provider'
+import { ConfigContext } from 'antd/lib/config-provider'
 import Trigger from 'rc-trigger'
 import BUILT_IN_PLACEMENTS from '../libs/placement'
 import Menu from './Menu'
