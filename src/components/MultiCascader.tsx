@@ -1,5 +1,6 @@
 import React, { useCallback, useImperativeHandle, useRef } from 'react'
-import { Button, Empty, ConfigProvider } from 'antd'
+import { Button, Empty } from 'antd'
+import { ConfigContext } from 'antd/es/config-provider'
 import Trigger from 'rc-trigger'
 import BUILT_IN_PLACEMENTS from '../libs/placement'
 import Menu from './Menu'
@@ -85,7 +86,7 @@ const Popup = (props: PopupProps) => {
 const Component = React.memo(
   React.forwardRef((props: Props, ref) => {
     const { getPopupContainer: getContextPopupContainer } = React.useContext(
-      ConfigProvider.ConfigContext
+      ConfigContext
     )
     const selectorRef = useRef(null)
     const {
