@@ -25,7 +25,7 @@
     "lessc": "lessc src/index.less dist/index.css --js",
     "test": "jest",
     "prepublishOnly": "yarn test && rm -rf dist/ && npm run compile",
-    "build-storybook": "build-storybook -o docs"
+    "build-storybook": "storybook-to-ghpages --out=docs --source-branch=main"
   },
   "peerDependencies": {
     "@ant-design/icons": "*",
@@ -41,6 +41,7 @@
     "@storybook/addon-essentials": "^6.2.1",
     "@storybook/addon-links": "^6.2.1",
     "@storybook/react": "^6.2.1",
+    "@storybook/storybook-deployer": "^2.8.7",
     "@types/classnames": "^2.2.11",
     "@types/jest": "^26.0.19",
     "@types/react": "^17.0.0",
