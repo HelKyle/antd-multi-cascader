@@ -1,8 +1,9 @@
 name: Storybook
 
-on:
-  push:
-    paths: ['src/**']
+on: [push]
+# on:
+#   push:
+# paths: ['src/**']
 
 jobs:
   build-and-deploy:
