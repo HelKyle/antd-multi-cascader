@@ -1,4 +1,9 @@
-import React, { useCallback, useImperativeHandle, useRef } from 'react'
+import React, {
+  ReactNode,
+  useCallback,
+  useImperativeHandle,
+  useRef,
+} from 'react'
 import { Button, Empty } from 'antd'
 import { ConfigContext } from 'antd/lib/config-provider'
 import Trigger from 'rc-trigger'
@@ -31,8 +36,9 @@ export interface Props {
   selectAllText?: string
   popupTransitionName?: string
   selectLeafOnly?: boolean
-  renderTitle?: (value: string) => string | undefined
+  renderTitle?: (value: string) => ReactNode | undefined
   getPopupContainer?: (props: any) => HTMLElement
+  maxTagCount?: number | 'responsive'
 }
 
 export interface PopupProps extends Props {
