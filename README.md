@@ -53,6 +53,7 @@ return (
 | onCascaderChange    | (node: TreeNode, operations: { add: (children: TreeNode[]) => TreeNode[] }) => void | Trigger when click a menu item                                                                                                                                        |
 | popupTransitionName | string                                                                              | Should set 'ant-slide-up' manually if antd version greater than 4.13.0                                                                                                |
 | getPopupContainer   | (props: any) => HTMLElement                                                         | Parent Node which the selector should be rendered to. Default to body. When position issues happen, try to modify it into scrollable content and position it relative |
+| maxTagCount         | Max tag count to show. responsive will cost render performance                      | number \| responsive                                                                                                                                                  |
 
 #### Async Data Example
 
