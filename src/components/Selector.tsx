@@ -87,16 +87,19 @@ const Selector = (props: SelectorProps) => {
     [onClear]
   )
 
-  const renderItem = useCallback((item: string) => {
-    return (
-      <Tag
-        key={item}
-        onRemove={onRemove}
-        item={selectedItemsMap[item] || item}
-        renderTitle={renderTitle}
-      />
-    )
-  }, [])
+  const renderItem = useCallback(
+    (item: string) => {
+      return (
+        <Tag
+          key={item}
+          onRemove={onRemove}
+          item={selectedItemsMap[item] || item}
+          renderTitle={renderTitle}
+        />
+      )
+    },
+    [selectedItemsMap, renderTitle, onRemove]
+  )
 
   const renderRest = useCallback(
     (omittedValues: string[]) => (
