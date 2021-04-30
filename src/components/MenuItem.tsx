@@ -46,9 +46,9 @@ export default React.memo((props: MenuItemProps) => {
         <span>{title}</span>
       </p>
       {!hasChildren ? null : loading && !children?.length ? (
-        <LoadingOutlined />
+        <LoadingOutlined className={`${prefix}-column-item-icon`} />
       ) : (
-        <RightOutlined />
+        <RightOutlined className={`${prefix}-column-item-icon`} />
       )}
     </li>
   )
