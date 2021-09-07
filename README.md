@@ -36,8 +36,8 @@ return (
 
 ### Props
 
-🚨 Should set `ant-slide-up` to `popupTransitionName` manually if your antd version greater than 4.13.0   
-🚨 如果你使用的 antd 版本大于 4.13.0，需要手动设置 `popupTransitionName: ant-slide-up`
+🚨 Please install 1.3.0 version or set popupTransitionName=slide-up manually if your antd version below 4.13.0  
+🚨 如果你使用的 antd 版本小于 4.13.0，请安装 1.3.0 的版本，或手动设置 popupTransitionName=slide-up
 
 | Props               | Type                                                                                | Description                                                                                                                                                           |
 | ------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -54,7 +54,7 @@ return (
 | cancelText          | string                                                                              | The text of the Cancel button                                                                                                                                         |
 | selectAllText       | string                                                                              | The text of the SelectAll radio                                                                                                                                       |
 | onCascaderChange    | (node: TreeNode, operations: { add: (children: TreeNode[]) => TreeNode[] }) => void | Trigger when click a menu item                                                                                                                                        |
-| popupTransitionName | string                                                                              | <strong>Should set 'ant-slide-up' manually if antd version greater than 4.13.0</strong>                                                                                                |
+| popupTransitionName | string                                                                              | <strong>Should set 'slide-up' manually if antd version below 4.13.0</strong>                                                                                          |
 | getPopupContainer   | (props: any) => HTMLElement                                                         | Parent Node which the selector should be rendered to. Default to body. When position issues happen, try to modify it into scrollable content and position it relative |
 | maxTagCount         | Max tag count to show. responsive will cost render performance                      | number \| responsive                                                                                                                                                  |
 
