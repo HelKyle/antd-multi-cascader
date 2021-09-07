@@ -36,7 +36,7 @@ return (
 
 ### Props
 
-🚨 Should set `ant-slide-up` to `popupTransitionName` manually if your antd version greater than 4.13.0
+🚨 Should set `ant-slide-up` to `popupTransitionName` manually if your antd version greater than 4.13.0   
 🚨 如果你使用的 antd 版本大于 4.13.0，需要手动设置 `popupTransitionName: ant-slide-up`
 
 | Props               | Type                                                                                | Description                                                                                                                                                           |
