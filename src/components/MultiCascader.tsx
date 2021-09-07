@@ -97,7 +97,7 @@ const Component = React.memo(
     const selectorRef = useRef(null)
     const {
       disabled,
-      popupTransitionName = 'slide-up',
+      popupTransitionName = 'ant-slide-up',
       getPopupContainer,
     } = props
     const {
