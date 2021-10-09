@@ -5,7 +5,6 @@ import React, {
   useRef,
 } from 'react'
 import { Button, Empty } from 'antd'
-import { ConfigContext } from 'antd/lib/config-provider'
 import Trigger from 'rc-trigger'
 import BUILT_IN_PLACEMENTS from '../libs/placement'
 import Menu from './Menu'
@@ -91,9 +90,6 @@ const Popup = (props: PopupProps) => {
 
 const Component = React.memo(
   React.forwardRef((props: Props, ref) => {
-    const { getPopupContainer: getContextPopupContainer } = React.useContext(
-      ConfigContext
-    )
     const selectorRef = useRef(null)
     const {
       disabled,
@@ -164,7 +160,7 @@ const Component = React.memo(
         builtinPlacements={BUILT_IN_PLACEMENTS}
         popupPlacement="bottomLeft"
         popupTransitionName={popupTransitionName}
-        getPopupContainer={getPopupContainer || getContextPopupContainer}
+        getPopupContainer={getPopupContainer}
       >
         <Selector
           forwardRef={selectorRef}
