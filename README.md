@@ -1,3 +1,6 @@
+# 🎉🎉🎉 News  
+Antd@4.17.0 has supported multiple cascader features. Should consider it first.
+
 # antd-multi-cascader
 
 ![Test](https://github.com/HelKyle/antd-multi-cascader/workflows/Test/badge.svg) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg) ![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)
